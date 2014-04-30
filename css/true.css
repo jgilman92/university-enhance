@@ -1,0 +1,193 @@
+input {
+	direction: rtl !important;
+	text-align: right !important;
+}
+
+h1 {
+	text-align: center;
+}
+
+.right_pannel {
+	background: #EDEDED;
+	box-shadow: 11px 0 10px -10px #000000 inset;
+	-webkit-box-shadow: 11px 0 10px -10px #000000 inset;
+	border: 0;
+	border-right: 1px solid black;
+}
+
+#splash {
+	text-align:center;
+	display:none
+}
+
+#Login_Page .ui-btn {
+	background: #29ACE3;
+	font-size:2em;
+	color:white;
+}
+
+#Login_Page form {
+	padding-top: 50px
+}
+
+.header_normal {
+	text-align: center;
+	padding: 0px 8px;
+	box-shadow: #aaa 1px 1px 1px 1px;
+	-webkit-box-shadow: #aaa 1px 1px 1px 1px;
+	-moz-box-shadow: #aaa 1px 1px 1px 1px;
+	border: none;
+}
+
+.welcome_message {
+	padding-top: 5px;
+	font-size: 1.5em;
+}
+
+.line_center {
+	text-align:center;
+}
+
+.course_container {
+	position: relative;
+	display: inline-block;
+	padding: 3%;
+}
+
+.course_container img {
+	max-width: 450px;
+	width: 100%;
+	-webkit-border-radius: 16px;
+	-moz-border-radius: 16px;
+	border-radius: 16px;
+	box-shadow: 0 0 10px 2px #AAAAAA;
+	-webkit-box-shadow: 0 0 10px 2px #AAAAAA;
+	-moz-box-shadow: 0 0 10px 2px #AAAAAA;
+	background: #ededed;
+}
+
+#begin_class_container {
+	padding-top: 50px;
+	text-align:center;
+}
+
+.class_error {
+	display:none;
+	color:red;
+	text-align:center;
+	font-size:1.3em;
+}
+
+.clock_container {
+	/*display:none;*/
+	text-align:center;
+}
+
+.clock_container h3 {
+	color:white;
+	margin: 2px !important;
+	padding: 0 !important;
+	font-size: 1.8em;
+}
+
+#clock {
+	font-size: 50px;
+	background: #EDEDED;
+}
+
+#clock label {
+	padding: 0.2em 0 0 0;
+	display: inline-block;
+	font-size: 50px;
+	font-weight: bold;
+}
+
+#stop_class {
+	background: #EDEDED;
+	text-align: left;
+	cursor: pointer;
+	-webkit-border-radius: 0 0 8px 8px;
+	-moz-border-radius: 0 0 8px 8px;
+	border-radius: 0 0 8px 8px;
+}
+
+#stop_class img {
+	position: relative;
+	bottom: 9px;
+	left: 9px;
+}
+
+.inner_clock_container {
+	background: linear-gradient(to bottom, rgba(68,86,102,1) 0%,rgba(68,86,102,1) 1%,rgba(68,86,102,1) 71%,rgba(68,86,102,0) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#445666', endColorstr='#00445666',GradientType=0 );
+	-webkit-border-radius: 6px; 
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	box-shadow: 0 2px 7px 0 #AAAAAA;
+	-webkit-box-shadow: 0 2px 7px 0 #AAAAAA;
+	-moz-box-shadow: 0 2px 7px 0 #AAAAAA;
+}
+
+#class_ended {
+	display: none;
+	text-align: center;
+}
+
+.class_phase_contaner {
+	text-align:center;
+	display: inline-block;
+	width: 30%;
+	margin: 1% 1% 5%;
+	background: none repeat scroll 0 0 #EDEDED;
+	box-shadow: 0 2px 7px 0 #AAAAAA;
+	-webkit-box-shadow: 0 2px 7px 0 #AAAAAA;
+	-moz-box-shadow: 0 2px 7px 0 #AAAAAA;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	min-height: 34px;
+	color: #445666;
+	font-size: 0.8em;
+	font-weight: bold;
+	line-height: 2.4em;
+}
+
+.class_phase_contaner.active {
+	background: #47D6C6;
+}
+
+.time_element {
+	background: none repeat scroll 0 0 #EDEDED;
+	box-shadow: 0 2px 7px 0 #AAAAAA;
+	-webkit-box-shadow: 0 2px 7px 0 #AAAAAA;
+	-moz-box-shadow: 0 2px 7px 0 #AAAAAA;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	width: 100%;
+	min-height: 68px;
+	margin-bottom: 26px;
+}
+
+.time_bar {
+	background-image: url("../img/job_seeker/time_bar.png");
+	background-repeat: no-repeat;
+	background-position: 0 8px;
+	background-origin: content-box;
+	background-size: 98% 50px;
+	height: 72px;
+	width: 98%;
+	position: relative;
+}
+
+.time_elapesed {
+	background: none no-repeat scroll 0 0 #47D6C6;
+	bottom: -30px;
+	height: 5px;
+	position: relative;
+	right: 4%;
+	width: 500px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}

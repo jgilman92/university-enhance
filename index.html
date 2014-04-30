@@ -1,133 +1,233 @@
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
-<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <title>AcadeMe TAU</title>
-        <meta name="description" content="">
-        <meta name="HandheldFriendly" content="True">
-        <meta name="MobileOptimized" content="320">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="apple-mobile-web-app-capable" content="yes"/>
-        <meta http-equiv="cleartype" content="on">
-
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch/apple-touch-icon-144x144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch/apple-touch-icon-114x114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch/apple-touch-icon-72x72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="img/touch/apple-touch-icon-57x57-precomposed.png">
-        <link rel="shortcut icon" href="img/touch/apple-touch-icon.png">
-
-        <!-- Tile icon for Win8 (144x144 + tile color) -->
-        <meta name="msapplication-TileImage" content="img/touch/apple-touch-icon-144x144-precomposed.png">
-        <meta name="msapplication-TileColor" content="#222222">
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--><html class="no-js"><!--<![endif]-->
+<head>	
+	<title>AcadeMe TAU</title>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta http-equiv="cleartype" content="on">
+	
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch/apple-touch-icon-144x144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch/apple-touch-icon-114x114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch/apple-touch-icon-72x72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="img/touch/apple-touch-icon-57x57-precomposed.png">
+	<link rel="shortcut icon" href="img/touch/apple-touch-icon.png">
+	
+	<!-- Tile icon for Win8 (144x144 + tile color) -->
+	<meta name="msapplication-TileImage" content="img/touch/apple-touch-icon-144x144-precomposed.png">
+	<meta name="msapplication-TileColor" content="#222222">
 		
-
-        <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
-        <!--
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta name="apple-mobile-web-app-title" content="">
-        -->
-
-        <!-- This script prevents links from opening in Mobile Safari. https://gist.github.com/1042026 -->
-        <!--
-        <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
-        -->
-
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/jquery.mobile-1.4.1.min.css">
-        <link rel="stylesheet" href="css/ver2.min.css">
-        <link rel="stylesheet" href="css/app.css">
-        <link rel='stylesheet' media='screen and (min-width: 300px) and (max-width: 700px)' href="css/app600.css" />
-        <link rel='stylesheet' media='screen and (min-width: 700px)' href="css/apptab.css" />
-        <script>
-        	var href_url = 'https://secure.wanted.co.il/poll.tau.wanted.co.il/';
-        	function onLoad(){
-        		var data = {action : 'display_questions_for_class'};
-				var json_param = 'jsn=' + JSON.stringify(data);
-			    var req = new XMLHttpRequest();   // new HttpRequest instance 
-				req.open("POST", href_url, false);
-				req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-				req.onreadystatechange = function() {
-				  if (req.readyState == 4) {  	
-				    if (req.status == 200 || req.status == 0) {
-				      var data = JSON.parse(req.responseText);
-				      if( data.success) {
-				      	alert('OK!');
-				   	  }
-				    }
-				  }
-				};
-				req.send(json_param);
-        	}
-		</script>
-    </head>
-    <body style="visibility: hidden;" onload="onLoad()">
-    	
-    	<div data-role="page" id="Login_Page">
-    		<div data-role="content" id="splash">
-    			<img class="splash_img" src="images/splash_screen.png" />
-    			<h2>AcadeMe TAU</h2>
-    		</div>
-			<div data-role="content" style="display: none;" id="login_page">	
-				<!--<p><a href="#" onclick="showAlert(); return false;">Show Alert</a></p>-->
-				<form data-ajax="false" method="post" name="login" id="login_form">    
-					<input type="hidden" value="my-account/posts/?type=job-seeker&cat=student" name="referrer">
-					<div class="login_container">
-						<div class="login_label">דוא"ל</div>
-						<input required class="pretty" id="login_email" type="text" value="" style="" name="login_email">	
-					</div>
-					<div class="login_container">
-						<div class="login_label">סיסמה</div>
-						<input required class="pretty" id="login_password" type="password" value="" name="login_password">
-					</div>
-					<!--
-					<div class="login_container">
-						<div class="login_label"><?=$strings['id_number']?></div>
-						<div><input required onblur="check_id(this)" class="field" type="text"  name="id_number" maxlength="10" value=""/></div>
-					</div>
-					-->
-					<div class="separator">&nbsp;</div>
-					<div class="submit_container">
-						<input type="submit" value="התחבר" class="login_enter">
-					</div>
-				</form>
-				<!--
-				<video id="audio_player" width="0" height="0">
-				    <source src="sounds/effectsSprite1.mp3">
-				</video >
-				-->
-				<div class="error" id="login_error">הפרטים אינם נכונים, אנא נסו שנית</div>
-			</div><!-- /content -->
-		</div><!-- /page -->
-		<!--App-->
-		
-    	
-        <!-- Add your site or application content here -->
-        <!--<script src="js/zepto.min.js"></script>-->
-		<script src="js/jquery-2.0.2.min.js"></script>
-		
-        <!--<script src="js/helper.js"></script>-->
-        
-        <script src="js/jquery.validate.min.js"></script>
-        <script src="js/messages_he.js"></script>
-        <!--<script type="text/javascript" src="js/jquery.mb.audio.js"></script>-->
-        <script src="js/main.js?version=1.1"></script>
-			<script src="js/iscroll.js"></script>
-			<link rel="stylesheet" href="css/chat.css">
-		<!--<script src="js/custom-init.js"></script>-->
-        <script src="js/jquery.mobile-1.4.1.min.js"></script>
-        <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
-        <script src="js/jquery.ui.touch-punch.min.js"></script>
-        
-        <div data-role="dialog" id="sure" data-title="האם להמשיך בפעולה?">
-		  <div data-role="content">
-		    <h3 class="sure-1">???</h3>
-		    <a href="#" class="sure-do" data-role="button" data-theme="b" data-rel="back">כן</a>
-		    <a href="#" data-role="button" data-theme="c" data-rel="back">לא</a>
-		  </div>
+	<!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+	<!--
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="">
+	-->
+	
+	<!-- This script prevents links from opening in Mobile Safari. https://gist.github.com/1042026 -->
+	<!--
+	<script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
+	-->
+	
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.1.min.css">
+	<link rel="stylesheet" href="css/ver2.min.css">
+	<link rel="stylesheet" href="css/true.css">
+	
+	<script type="text/javascript" src="cordova.js"></script>
+</head>
+<body style="direction:rtl">
+	<div data-role="page" id="Login_Page">
+		<div data-role="content" id="splash">
+			<img class="splash_img" src="css/images/splash_screen.png" />
+			<h2>AcadeMe TAU</h2>
 		</div>
-		
-    </body>
+		<div data-role="content" id="login_page">	
+			<form autocomplete="off" data-ajax="true" method="post" name="login_form" id="login_form">    
+				<input type="text" placeholder='דוא"ל' id="login_email" name="login_email" />	
+				<input type="submit" value="התחבר" />
+				<div class="error" style="display:none; padding:3px; color:red; text-align: center">משתמש לא קיים במערכת</div>
+			</form>
+		</div>
+	</div>
+	
+	<!---------------------------------------------------------------------------->
+	
+	<div data-role="page" id="DashBoard_Page_Seeker" >
+		<div class="header_normal" data-role="header">
+			<h1>שלום,<br />דור לוי
+			<div class="welcome_message">רשימת הקורסים בעלי אפשרות לדרוג מרצה הקורס</div></h1>
+			<a data-role="button" href="#" id="logout">התנתק</a>
+		</div>
+		<div data-role="content">	
+			<div class="line_center">
+				<div class="course_container" style="opacity:.5">
+					<a class="course_linking" name="course" href="#job_seeker_class_page" id="course" rel="external">
+						<img src="img/courses/chinese_philo.png" />
+					</a>
+				</div>
+				<div class="course_container" style="opacity:.5">
+					<a class="course_linking" name="course" href="#job_seeker_class_page" id="course" rel="external">
+						<img src="img/courses/chinese_philo.png" />
+					</a>
+				</div>
+				<div class="course_container" style="opacity:.5">
+					<a class="course_linking" name="course" href="#job_seeker_class_page" id="course" rel="external">
+						<img src="img/courses/chinese_philo.png" />
+					</a>
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" class="ui-bar" style="text-align: center;">
+			<a href="mailto:michael@wanted.co.il?subject=עזרה טכנית">צור קשר</a>
+		</div>		
+	</div>
+	
+	<div data-role="page" id="job_seeker_class_page">
+		<div class="header_normal" data-role="header">
+			<h1>דור לוי
+			<div class="welcome_message course_name_header">כלכלה</div></h1>
+			<a href="#DashBoard_Page" title="Go back" data-rel="back" data-direction="reverse" data-position="left" data-icon="arrow-l" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Go Back</a>
+		</div>
+		<div data-role="content">
+			<div id="active_class_container">
+				<div class="class_phase">
+					<div id="class_phase_one" class="class_phase_contaner active">תחילת הרצאה</div>			
+					<div id="class_phase_two" class="class_phase_contaner">אמצע הרצאה</div>			
+					<div id="class_phase_three" class="class_phase_contaner">סוף הרצאה</div>			
+				</div>
+				<div class="clock_container" id="job_seeker_clock">
+					<div class="time_element">
+						<div class="time_bar">
+							<div class="time_elapesed" id="time_elapsed_seeker"></div>
+						</div>
+					</div>
+					<div id="timer_seeker" class="inner_clock_container">
+						<h3>להצבעה</h3>
+						<div id="clock">
+							<label id="seconds">00</label>:<label id="minutes">00</label>:<label id="hour">00</label>
+						</div>
+					</div>
+				</div>
+				<div id="no_questions_left">
+					<h1 style="text-align: center">תמו השאלות</h1>
+				</div>
+			</div>
+			<div id="class_ended">
+				<h1>ההרצאה הסתיימה!</h1>
+				<h2>תודה על השתתפותך</h2>
+			</div>
+			<div id="class_not_started">
+				<h1>ההרצאה עדיין לא החלה</h1>
+			</div>		
+		</div><!-- /content -->
+		<div class="chat_job_seeker">
+			<a href="#chat_job_seeker" data-rel="popup" data-position-to="window" data-transition="pop">
+				<img src="img/job_seeker/chat_icon.png" style="max-width:45px; margin-right:10px" alt="צ'אט" />
+			</a>
+			<div data-role="popup" style="width:100%" id="chat_job_seeker" class="ui-corner-all">
+				<div class="chat_submit">
+					<input type="text" style="text-align: right" id="chat_text" placeholder="רשום הודעה" />
+				    <button id="submit_post">שלח</button>
+				</div>
+				<div id="chat_history"></div>
+				<div id="chat_empty">
+					<h4>אין רשומות חדשות</h4>		    		
+				</div>
+			</div>
+		</div>
+		<div class="fake_q" onclick="changeQustion($question.attr('id'))"></div>
+	</div>
+	
+	<!---------------------------------------------------------------------------->
+	
+	<div data-role="page" id="DashBoard_Page" >
+		<div class="right_pannel" data-role="panel" id="emp_panel" data-display="push" data-position="right" data-theme="c">
+		    <p><a data-role="button" href="#DashBoard_Page">מסך ראשי</a></p>
+		    <!--<p><a data-role="button" href="#my_questions">מאגר שאלות</a></p>-->
+		    <p><a data-role="button" href="#ranking">סטטיסטיקה</a></p>
+		    <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="left">סגור</a>
+		</div><!-- /panel -->
+		<div class="header_normal" data-role="header">
+			<h1>שלום,<br />מרצה דוגמה
+			<div class="welcome_message">זו רשימת הקורסים שהנך מרצה בהם</div></h1>
+			<a data-role="button" href="#" id="logout">התנתק</a>
+			<a data-role="button" href="#emp_panel" data-position="right" data-icon="bars" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Open right panel</a>
+		</div>
+		<div data-role="content">	
+			<div class="line_center">
+				<div class="course_container">
+					<a class="course_linking" name="course" href="#employer_class_page" id="course" rel="external">
+						<img src="img/courses/chinese_philo.png" />
+					</a>
+				</div>
+				<div class="course_container">
+					<a class="course_linking" name="course" href="#employer_class_page" id="course" rel="external">
+						<img src="img/courses/chinese_philo.png" />
+					</a>
+				</div>
+				<div class="course_container">
+					<a class="course_linking" name="course" href="#employer_class_page" id="course" rel="external">
+						<img src="img/courses/chinese_philo.png" />
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div data-role="page" id="employer_class_page">
+		<div class="right_pannel" data-role="panel" id="emp_panel_2" data-display="push" data-position="right" data-theme="c">
+		    <p><a data-role="button" href="#DashBoard_Page">מסך ראשי</a></p>
+		    <!--<p><a data-role="button" href="#my_questions">מאגר שאלות</a></p>-->
+		    <p><a data-role="button" href="#ranking">סטטיסטיקה</a></p>
+		    <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="left">סגור</a>
+		</div><!-- /panel -->
+		<div class="header_normal" data-role="header">
+			<h1>מרצה דוגמה
+			<div class="welcome_message course_name_header">כלכלה</div></h1>
+			<a href="#DashBoard_Page" title="Go back" data-rel="back" data-direction="reverse" data-position="left" data-icon="arrow-l" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Go Back</a>
+			<a href="#emp_panel_2" data-position="right" data-icon="bars" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Open right panel</a>
+		</div>
+		<div data-role="content">	
+			<div id="begin_class_container">
+				<form data-ajax="false" method="post" id="class_start">
+					<a id="class_start_submit" href="#">
+						<img src="img/employer/start_class_green.png" />
+					</a>
+				</form>
+				<div class="class_error" id="class_error">ההרצאה כבר החלה, נא לסיים את ההרצאה הקודמת לפני תחילת הרצאה חדשה</div>
+				<div class="class_error" id="class_started">ההרצאה החלה, אנא המתן</div>
+			</div>
+			<div class="clock_container" id="employer_clock">
+				<div class="inner_clock_container">
+					<h3>משך ההרצאה</h3>
+					<div id="clock">
+						<label id="seconds">00</label>:<label id="minutes">00</label>:<label id="hour">00</label>
+					</div>
+					<div id="stop_class" title="עצור הרצאה">
+						<img src="img/employer/stop_class.png" alt="עצור הרצאה" />
+					</div>
+				</div>
+			</div>
+			<div id="class_ended"><h3>אין נתונים</h3></div>
+		</div>
+	</div>
+	
+	<div data-role="dialog" id="sure" data-title="האם להמשיך בפעולה?">
+		<div data-role="content">
+			<h3 class="sure-1">???</h3>
+			<a href="#" class="sure-do" data-role="button" data-theme="b" data-rel="back">כן</a>
+			<a href="#" data-role="button" data-theme="c" data-rel="back">לא</a>
+		</div>
+	</div>
+
+	<script src="js/jquery-2.0.2.min.js"></script>
+	<script src="js/jquery.mobile-1.4.1.min.js"></script>
+	<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+	<script src="js/jquery.ui.touch-punch.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
 </html>
