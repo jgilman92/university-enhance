@@ -42,7 +42,7 @@
 <body style="direction:rtl">
 	<div data-role="page" id="Login_Page">
 		<div data-role="content" id="splash">
-			<img class="splash_img" src="css/images/splash_screen.png" />
+			<img class="splash_img" src="img/splash_screen.png" />
 			<h2>AcadeMe TAU</h2>
 		</div>
 		<div data-role="content" id="login_page">	
@@ -58,42 +58,27 @@
 	
 	<div data-role="page" id="DashBoard_Page_Seeker" >
 		<div class="header_normal" data-role="header">
-			<h1>שלום,<br />דור לוי
-			<div class="welcome_message">רשימת הקורסים בעלי אפשרות לדרוג מרצה הקורס</div></h1>
-			<a data-role="button" href="#" id="logout">התנתק</a>
+			<h1></h1>
+			<div class="welcome_message">רשימת הקורסים בעלי אפשרות לדרוג מרצה הקורס</div>
+			<a data-role="button" href="#" class="logout">התנתק</a>
 		</div>
 		<div data-role="content">	
 			<div class="line_center">
-				<div class="course_container" style="opacity:.5">
-					<a class="course_linking" name="course" href="#job_seeker_class_page" id="course" rel="external">
-						<img src="img/courses/chinese_philo.png" />
-					</a>
-				</div>
-				<div class="course_container" style="opacity:.5">
-					<a class="course_linking" name="course" href="#job_seeker_class_page" id="course" rel="external">
-						<img src="img/courses/chinese_philo.png" />
-					</a>
-				</div>
-				<div class="course_container" style="opacity:.5">
-					<a class="course_linking" name="course" href="#job_seeker_class_page" id="course" rel="external">
-						<img src="img/courses/chinese_philo.png" />
-					</a>
-				</div>
 			</div>
 		</div>
-		<div data-role="footer" class="ui-bar" style="text-align: center;">
+		<div data-role="footer" data-position="fixed" class="ui-bar" style="text-align: center;">
 			<a href="mailto:michael@wanted.co.il?subject=עזרה טכנית">צור קשר</a>
 		</div>		
 	</div>
 	
 	<div data-role="page" id="job_seeker_class_page">
 		<div class="header_normal" data-role="header">
-			<h1>דור לוי
-			<div class="welcome_message course_name_header">כלכלה</div></h1>
-			<a href="#DashBoard_Page" title="Go back" data-rel="back" data-direction="reverse" data-position="left" data-icon="arrow-l" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Go Back</a>
+			<h1></h1>
+			<div class="welcome_message course_name_header"></div>
+			<a class="custom_back_button" href="#DashBoard_Page" title="Go back" data-rel="back" data-direction="reverse" data-position="left" data-icon="arrow-l" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Go Back</a>
 		</div>
 		<div data-role="content">
-			<div id="active_class_container">
+			<div id="active_class_container" style="display:none">
 				<div class="class_phase">
 					<div id="class_phase_one" class="class_phase_contaner active">תחילת הרצאה</div>			
 					<div id="class_phase_two" class="class_phase_contaner">אמצע הרצאה</div>			
@@ -112,8 +97,8 @@
 						</div>
 					</div>
 				</div>
-				<div id="no_questions_left">
-					<h1 style="text-align: center">תמו השאלות</h1>
+				<div id="no_questions_left" style="display:none">
+					<h1 style="text-align: center;">תמו השאלות</h1>
 				</div>
 			</div>
 			<div id="class_ended">
@@ -130,7 +115,7 @@
 			</a>
 			<div data-role="popup" style="width:100%" id="chat_job_seeker" class="ui-corner-all">
 				<div class="chat_submit">
-					<input type="text" style="text-align: right" id="chat_text" placeholder="רשום הודעה" />
+					<input type="text" id="chat_text" placeholder="רשום הודעה" />
 				    <button id="submit_post">שלח</button>
 				</div>
 				<div id="chat_history"></div>
@@ -152,28 +137,13 @@
 		    <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="left">סגור</a>
 		</div><!-- /panel -->
 		<div class="header_normal" data-role="header">
-			<h1>שלום,<br />מרצה דוגמה
-			<div class="welcome_message">זו רשימת הקורסים שהנך מרצה בהם</div></h1>
-			<a data-role="button" href="#" id="logout">התנתק</a>
+			<h1></h1>
+			<div class="welcome_message">זו רשימת הקורסים שהנך מרצה בהם</div>
+			<a data-role="button" href="#" class="logout">התנתק</a>
 			<a data-role="button" href="#emp_panel" data-position="right" data-icon="bars" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Open right panel</a>
 		</div>
 		<div data-role="content">	
-			<div class="line_center">
-				<div class="course_container">
-					<a class="course_linking" name="course" href="#employer_class_page" id="course" rel="external">
-						<img src="img/courses/chinese_philo.png" />
-					</a>
-				</div>
-				<div class="course_container">
-					<a class="course_linking" name="course" href="#employer_class_page" id="course" rel="external">
-						<img src="img/courses/chinese_philo.png" />
-					</a>
-				</div>
-				<div class="course_container">
-					<a class="course_linking" name="course" href="#employer_class_page" id="course" rel="external">
-						<img src="img/courses/chinese_philo.png" />
-					</a>
-				</div>
+			<div class="line_center" style="width: 90%">
 			</div>
 		</div>
 	</div>
@@ -186,8 +156,8 @@
 		    <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="left">סגור</a>
 		</div><!-- /panel -->
 		<div class="header_normal" data-role="header">
-			<h1>מרצה דוגמה
-			<div class="welcome_message course_name_header">כלכלה</div></h1>
+			<h1></h1>
+			<div class="welcome_message course_name_header"></div>
 			<a href="#DashBoard_Page" title="Go back" data-rel="back" data-direction="reverse" data-position="left" data-icon="arrow-l" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Go Back</a>
 			<a href="#emp_panel_2" data-position="right" data-icon="bars" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Open right panel</a>
 		</div>
@@ -212,7 +182,207 @@
 					</div>
 				</div>
 			</div>
-			<div id="class_ended"><h3>אין נתונים</h3></div>
+			<div id="class_ended_employer"></div>
+		</div>
+	</div>
+	
+	<div data-role="page" id="ranking">
+		<div class="right_pannel" data-role="panel" id="emp_panel_3" data-display="push" data-position="right" data-theme="c">
+		    <p><a data-role="button" href="#DashBoard_Page">מסך ראשי</a></p>
+		    <!--<p><a data-role="button" href="#my_questions">מאגר שאלות</a></p>-->
+		    <p><a data-role="button" href="#ranking">סטטיסטיקה</a></p>
+		    <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="left">סגור</a>
+		</div><!-- /panel -->
+		<div class="header_normal" data-role="header">
+			<h1></h1>
+			<div class="welcome_message">סטטיסטיקה</div>
+			<a href="#DashBoard_Page" title="Go back" data-rel="back" data-direction="reverse" data-position="left" data-icon="arrow-l" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Go Back</a>
+			<a data-role="button" href="#emp_panel_3" data-position="right" data-icon="bars" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Open right panel</a>
+		</div>		
+		<div data-role="content">	
+			<div class="ranking_container" style="text-align: center;">
+				<div><a style="cursor: pointer">תוצאות מדדים</a></div>
+				<span style="display:none; font-size:20px">
+					<a href="#ranking_semester">דירוג לפי הרצאה</a><br />
+					<a href="#ranking_semester_average">דירוג ממוצע</a>
+				</span>
+				
+				<div><a style="cursor: pointer">שעור הצבעה</a></div>
+				<span style="display:none; font-size:20px">
+					<a href="#precentage_per_class">שעור הצבעה לפי הרצאה</a><br />
+					<a href="#precentage_per_course">שעור הצבעה ממוצע</a>
+				</span>
+				
+				<!--<div><a href="#questions_semester">תוצאות שאלות</a></div>-->
+			</div>
+		</div>
+	</div>
+	
+	<div data-role="page" id="ranking_semester_average">
+		<div class="right_pannel" data-role="panel" id="emp_panel_4" data-display="push" data-position="right" data-theme="c">
+		    <p><a data-role="button" href="#DashBoard_Page">מסך ראשי</a></p>
+		    <!--<p><a data-role="button" href="#my_questions">מאגר שאלות</a></p>-->
+		    <p><a data-role="button" href="#ranking">סטטיסטיקה</a></p>
+		    <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="left">סגור</a>
+		</div><!-- /panel -->
+		<div class="header_normal" data-role="header">
+			<h1></h1>
+			<div class="welcome_message">דירוג ממוצע לקורס</div>
+			<a href="#DashBoard_Page" title="Go back" data-rel="back" data-direction="reverse" data-position="left" data-icon="arrow-l" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Go Back</a>
+			<a data-role="button" href="#emp_panel_4" data-position="right" data-icon="bars" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Open right panel</a>
+		</div>
+		
+		<div data-role="content">	
+			<div data-role="collapsible-set" id="ranking_semester_average_accordion">				
+			</div>	
+		</div>	
+	</div>
+	
+	<div data-role="page" id="ranking_semester">
+		<div class="right_pannel" data-role="panel" id="emp_panel_5" data-display="push" data-position="right" data-theme="c">
+		    <p><a data-role="button" href="#DashBoard_Page">מסך ראשי</a></p>
+		    <!--<p><a data-role="button" href="#my_questions">מאגר שאלות</a></p>-->
+		    <p><a data-role="button" href="#ranking">סטטיסטיקה</a></p>
+		    <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="left">סגור</a>
+		</div><!-- /panel -->
+		<div class="header_normal" data-role="header">
+			<h1></h1>
+			<div class="welcome_message">דירוג לפי הרצאה</div>
+			<a href="#DashBoard_Page" title="Go back" data-rel="back" data-direction="reverse" data-position="left" data-icon="arrow-l" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Go Back</a>
+			<a data-role="button" href="#emp_panel_5" data-position="right" data-icon="bars" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Open right panel</a>
+		</div>
+		
+		<div data-role="content">	
+			<div data-role="collapsible-set" id="ranking_semester_accordion">				
+			</div>
+		</div>
+		
+		<div style="text-align:center" class="paging_pages"></div>
+	</div>
+	
+	<div data-role="page" id="precentage_per_class">
+		<div class="right_pannel" data-role="panel" id="emp_panel_6" data-display="push" data-position="right" data-theme="c">
+		    <p><a data-role="button" href="#DashBoard_Page">מסך ראשי</a></p>
+		    <!--<p><a data-role="button" href="#my_questions">מאגר שאלות</a></p>-->
+		    <p><a data-role="button" href="#ranking">סטטיסטיקה</a></p>
+		    <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="left">סגור</a>
+		</div><!-- /panel -->
+		<div class="header_normal" data-role="header">
+			<h1></h1>
+			<div class="welcome_message">שעור הצבעה לפי הרצאה</div>
+			<a href="#DashBoard_Page" title="Go back" data-rel="back" data-direction="reverse" data-position="left" data-icon="arrow-l" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Go Back</a>
+			<a data-role="button" href="#emp_panel_6" data-position="right" data-icon="bars" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Open right panel</a>
+		</div>
+		
+		<div data-role="content">	
+			<div data-role="collapsible-set" id="precentage_per_class_accordion">
+			</div>	
+		</div>	
+		
+		<div style="text-align:center" class="paging_pages"></div>
+	</div>
+	
+	<div data-role="page" id="precentage_per_course">
+		<div class="right_pannel" data-role="panel" id="emp_panel_7" data-display="push" data-position="right" data-theme="c">
+		    <p><a data-role="button" href="#DashBoard_Page">מסך ראשי</a></p>
+		    <!--<p><a data-role="button" href="#my_questions">מאגר שאלות</a></p>-->
+		    <p><a data-role="button" href="#ranking">סטטיסטיקה</a></p>
+		    <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="left">סגור</a>
+		</div><!-- /panel -->
+		<div class="header_normal" data-role="header">
+			<h1></h1>
+			<div class="welcome_message">שעור הצבעה ממוצע</div>
+			<a href="#DashBoard_Page" title="Go back" data-rel="back" data-direction="reverse" data-position="left" data-icon="arrow-l" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Go Back</a>
+			<a data-role="button" href="#emp_panel_7" data-position="right" data-icon="bars" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Open right panel</a>
+		</div>
+		
+		<div data-role="content">	
+			<div data-role="collapsible-set" id="precentage_per_course_accordion">
+			</div>	
+		</div>
+	</div>
+	
+	<div data-role="page" id="questions_semester">
+		<div class="right_pannel" data-role="panel" id="emp_panel_8" data-display="push" data-position="right" data-theme="c">
+		    <p><a data-role="button" href="#DashBoard_Page">מסך ראשי</a></p>
+		    <!--<p><a data-role="button" href="#my_questions">מאגר שאלות</a></p>-->
+		    <p><a data-role="button" href="#ranking">סטטיסטיקה</a></p>
+		    <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="left">סגור</a>
+		</div><!-- /panel -->
+		<div class="header_normal" data-role="header">
+			<h1></h1>
+			<div class="welcome_message">סטטיסטיקת תשובות לשאלות</div>
+			<a href="#DashBoard_Page" title="Go back" data-rel="back" data-direction="reverse" data-position="left" data-icon="arrow-l" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Go Back</a>
+			<a data-role="button" href="#emp_panel_8" data-position="right" data-icon="bars" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Open right panel</a>
+		</div>
+		
+		<div data-role="content">	
+			<div data-role="collapsible-set" id="questions_semester_accordion">				
+			</div>
+		</div>
+		
+		<div style="text-align:center" class="paging_pages"></div>
+	</div>
+	
+	<div data-role="page" id="my_questions">
+		<div class="right_pannel" data-role="panel" id="emp_panel_9" data-display="push" data-position="right" data-theme="c">
+		    <p><a data-role="button" href="#DashBoard_Page">מסך ראשי</a></p>
+		    <!--<p><a data-role="button" href="#my_questions">מאגר שאלות</a></p>-->
+		    <p><a data-role="button" href="#ranking">סטטיסטיקה</a></p>
+		    <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="left">סגור</a>
+		</div><!-- /panel -->
+		<div class="header_normal" data-role="header">
+			<h1></h1>
+			<div class="welcome_message">השאלות שלי</div>
+			<a href="#DashBoard_Page" title="Go back" data-rel="back" data-direction="reverse" data-position="left" data-icon="arrow-l" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Go Back</a>
+			<a data-role="button" href="#emp_panel_9" data-position="right" data-icon="bars" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Open right panel</a>
+		</div>
+		
+		<div data-role="content">
+			<div class='line_center'>
+					<fieldset data-role="controlgroup">
+						<button id="questions">מאגר שאלות</button>
+						<button id="new_question">הוספת שאלה חדשה</button>
+						<button id="questions_timings">תזמון שאלות</button>
+					</fieldset>
+					<div id="new_question_container" class="questions_page_container" style="display: none">
+						<div id="new_question_errors">
+							<div style="display:none;" id="error_question">- יש להזין שאלה</div>
+							<div style="display:none;" id="error_answers">- יש להזין 2 תשובות לפחות</div>
+						</div>
+						<form method="post">
+							<input data-mini="true" placeholder="שאלה" style="text-align: right" type="text" name="question" id="question" />
+							<input data-mini="true" placeholder="תשובה 1" style="text-align: right" type="text" name="answer_1" id="answer_1" />
+							<input data-mini="true" placeholder="תשובה 2" style="text-align: right" type="text" name="answer_2" id="answer_2" />
+							<input data-mini="true" placeholder="תשובה 3" style="text-align: right" type="text" name="answer_3" id="answer_3" />
+							<input data-mini="true" placeholder="תשובה 4" style="text-align: right" type="text" name="answer_4" id="answer_4" />
+							<select data-mini="true" name="course_select" id="course_select">
+							</select>
+							<input data-mini="true" type="button" value="הוסף שאלה למאגר" name="submit_button" id="submit_button" />
+						</form>
+					</div>
+					<div id="questions_timings_container" class="questions_page_container" style="display: none">
+						<div class='line_center'>
+								<form method="post">			
+									<select data-mini="true" name="questions_course_select" id="questions_course_select">
+									</select>
+									<div id="timing_errors">
+									- יש להזין תזמון תקין לשאלות שנבחרו
+									</div>
+									<div id="course_questions_container">
+									</div>
+								</form>
+
+								<h3>יש להשתייך תחילה לקורס אחד לפחות</h3>
+						</div>
+					</div>
+					<div data-role="collapsible-set" class="questions_page_container" id="questions_container"><div></div>
+					</div>
+					
+					<div style="text-align:center" class="paging_pages"></div>
+
+					<h3>יש להשתייך תחילה לקורס אחד לפחות</h3>
+			</div>
 		</div>
 	</div>
 	

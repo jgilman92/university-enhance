@@ -3,7 +3,7 @@ input {
 	text-align: right !important;
 }
 
-h1 {
+h1, h3 {
 	text-align: center;
 }
 
@@ -46,6 +46,7 @@ h1 {
 
 .line_center {
 	text-align:center;
+	margin:auto;
 }
 
 .course_container {
@@ -66,6 +67,15 @@ h1 {
 	background: #ededed;
 }
 
+.class_active {
+-webkit-border-radius: 15px !important;
+-moz-border-radius: 15px !important;
+border-radius: 15px !important;
+box-shadow: 0 0 18px 5px #29ACE3 !important;
+-webkit-box-shadow: 0 0 18px 5px #29ACE3 !important;
+-moz-box-shadow: 0 0 18px 5px #29ACE3 !important;
+}
+
 #begin_class_container {
 	padding-top: 50px;
 	text-align:center;
@@ -79,14 +89,14 @@ h1 {
 }
 
 .clock_container {
-	/*display:none;*/
+	display:none;
 	text-align:center;
 }
 
 .clock_container h3 {
 	color:white;
 	margin: 2px !important;
-	padding: 0 !important;
+	padding: 5px !important;
 	font-size: 1.8em;
 }
 
@@ -169,6 +179,10 @@ h1 {
 	margin-bottom: 26px;
 }
 
+.time_element>.ui-slider {
+	padding:10px;
+}
+
 .time_bar {
 	background-image: url("../img/job_seeker/time_bar.png");
 	background-repeat: no-repeat;
@@ -186,8 +200,135 @@ h1 {
 	height: 5px;
 	position: relative;
 	right: 4%;
-	width: 500px;
+	width: 28%;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
+}
+
+.seeker_question {
+	display:none;
+	position:relative;
+}
+
+.seeker_question h3 {
+	font-size: 20px;
+}
+
+.vote_box {
+	position: absolute;
+	bottom: 7px;
+	left: 7px;
+	width: 100px;
+	background: none repeat scroll 0 0 #47D6C6;
+	box-shadow: 0 2px 7px 0 #AAAAAA;
+	-webkit-box-shadow: 0 2px 7px 0 #AAAAAA;
+	-moz-box-shadow: 0 2px 7px 0 #AAAAAA;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	font-size: 1.5em;
+	font-weight: bold;
+	padding: 1px;
+	color: #445666;
+}
+
+.ranking_container div {
+	background: none repeat scroll 0 0 #EDEDED;
+	box-shadow: 0 2px 7px 0 #AAAAAA;
+	-webkit-box-shadow: 0 2px 7px 0 #AAAAAA;
+	-moz-box-shadow: 0 2px 7px 0 #AAAAAA;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	width: 100%;
+	min-height: 99px;
+	text-align: center;
+	margin-top: 5%;
+}
+
+.ranking_container div a {
+	text-decoration: none;
+	color: #445666!important;
+	font-size: 2em;
+	line-height: 2.5em;
+}
+
+.ui-collapsible a {
+	text-align:right !important;
+}
+
+.stats_score_container {
+	min-height: 30px;
+	width: 100%;
+	font-size: 1.2em;
+	color: white;
+	text-shadow: 0 1px 0 #000;
+}
+
+.stats_score_bar {
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	background: #445666;
+	min-height: 43px;
+	margin: 0 auto;
+}
+
+.stats_score {
+	text-align: center;
+	float: right;
+	position: relative;
+	background: #47D6C6;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	min-height: 30px;
+	padding: 10px 0 3px;
+}
+
+#timing_errors, #new_question_errors {
+	display:none;
+	border-radius:6px;
+	border: 1px dashed #C5AF75;
+	background: url('../img/error-background.png');
+}
+
+#chat_job_seeker-popup {
+	width:80%;
+	right:10%;	
+}
+
+#chat_job_seeker {
+	padding:10px;
+}
+
+.chat_container {
+	text-align: center;
+	margin: 1em;
+	background: #ffffff;
+	box-shadow: 0 2px 7px 0 #AAAAAA;
+	-webkit-box-shadow: 0 2px 7px 0 #AAAAAA;
+	-moz-box-shadow: 0 2px 7px 0 #AAAAAA;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+
+.chat_friend label {
+	margin: 0;
+	background: #445666;
+	color: #FFFFFF;
+}
+
+.chat_personal label {
+	margin: 0;
+	background: #165E7C;
+	padding: 3px;
+	color: #FFFFFF;
+	font-size: 1.2em;
+}
+
+.chat_container h4 {
+	margin: 0!important;
 }
