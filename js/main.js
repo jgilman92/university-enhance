@@ -22,13 +22,6 @@ var elapsed = null; // Stores the time elapsed ~~~Professor
 var class_stoped = false; // Validates that professor stopped the class
 var class_interval = null; // Professor's timer interval
 
-
-function onDeviceReady() {
-    
-}
-document.addEventListener('deviceready', onDeviceReady, true);
-
-
 /* Mutual JS Handlers */
 // Login Page
 $('#Login_Page').on("pagebeforeshow", function() {

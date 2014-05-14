@@ -317,8 +317,8 @@ box-shadow: 0 0 18px 5px orange !important;
 
 .chat_job_seeker {
 	position: absolute;
-	bottom: 10px;
-	right: 10px;
+	top: 5px;
+	right: 5px;
 }
 
 .chat_container {

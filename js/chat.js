@@ -4,7 +4,7 @@ var myScroll;
 function getChatPosts(course_id_chat) {
 	var action = 'getChatPosts';
 	var parameters = {'course_id_chat' : course_id_chat};
- 	var json_param = JSON.stringify(parameters);
+	var json_param = JSON.stringify(parameters);
     var req = new XMLHttpRequest(); // new HttpRequest instance 
 	req.open("POST", href_url, false);
 	req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -13,7 +13,10 @@ function getChatPosts(course_id_chat) {
 		if (req.status == 200 || req.status == 0) {
 			var data = JSON.parse(req.responseText);
 			if(data.success) {
-				var chat_array = data.chat_array;
+				chat_array = data.chat_array;
+				if(chat_array == null) {
+					chat_array = {};
+				}
 				if(Object.keys(chat_array).length > 0) {
 					$('#chat_empty').hide();
 					var chat_container = '';
