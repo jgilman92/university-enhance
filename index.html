@@ -67,7 +67,29 @@
 			</div>
 		</div>
 		<div data-role="footer" data-position="fixed" class="ui-bar" style="text-align: center;">
-			<a href="mailto:michael@wanted.co.il?subject=עזרה טכנית">צור קשר</a>
+			<a href="#mailForm">צור קשר</a>
+		</div>		
+	</div>
+	
+	<div data-role="page" id="mailForm">
+		<div class="header_normal" data-role="header">
+			<h1></h1>
+			<div class="welcome_message">צור קשר</div>
+			<a class="custom_back_button" href="#DashBoard_Page" title="Go back" data-rel="back" data-direction="reverse" data-position="left" data-icon="arrow-l" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Go Back</a>
+		</div>
+		<div data-role="content">	
+			<div class="line_center">
+				<form id="contact_form" method="post">
+					<select id="contact_subject" name="contact_subject">
+						<option selected="selected" disabled="disabled">נושא ההודעה</option>
+						<option value="בעיה טכנית">בעיה טכנית</option>
+						<option value="הערה">הערה</option>
+						<option value="שאלה">שאלה</option>
+					</select>
+					<textarea id="contact_message" name="contact_message" placeholder="תוכן ההודעה"></textarea>
+					<input type="submit" value="שליחה" />
+				</form>
+			</div>
 		</div>		
 	</div>
 	

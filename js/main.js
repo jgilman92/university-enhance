@@ -156,7 +156,7 @@ $('#DashBoard_Page, #DashBoard_Page_Seeker').on("pagebeforeshow", function() {
 			}
 		});
 	}
-		
+	
 	$( document ).on( "swipeleft", "#DashBoard_Page", function( e ) {
 		// We check if there is no open panel on the page because otherwise
 		// a swipe to close the left panel would also open the right panel (and v.v.).
@@ -349,6 +349,41 @@ $('#job_seeker_class_page').on('pagehide', function(){
 	}
 	$('#timer_seeker').hide();	
 	$('#timer_seeker').nextAll().remove();
+});
+
+// Contact Page
+$(document).on('pagebeforeshow', '#mailForm', function(e, data){
+	$('.header_normal h1').html(localStorage.first_name + " " + localStorage.last_name);
+});
+
+$('#contact_form').submit(function(e){
+	e.preventDefault();
+	var subject = $('#contact_subject').val();
+	var message = $('#contact_message').val();
+	var action = 'contact_form';
+	var parameters = {'user_name' : localStorage.first_name + " " + localStorage.last_name, 'user_id': localStorage.user_id, 'subject': subject, 'message': message};
+	var json_param = JSON.stringify(parameters);
+	var req = new XMLHttpRequest(); // new HttpRequest instance 
+	req.open("POST", href_url, false);
+	req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	req.onreadystatechange = function() {
+		if (req.readyState == 4) {
+			if (req.status == 200 || req.status == 0) {
+				var data = JSON.parse(req.responseText);
+				if(data.success) {
+					alert("פנייתך התקבלה בהצלחה, תודה!");
+					$('#contact_subject').val('');
+					$('#contact_message').val('');
+					$('#contact_subject').prev('span').html('נושא ההודעה');
+					$(':mobile-pagecontainer').pagecontainer('change',"#DashBoard_Page_Seeker");
+				} else {
+					alert("קרתה שגיאה, אנא נסו שנית.");
+				}
+				loading( "hide" );
+			}
+		}
+	};
+	req.send("action=" + action + "&parameters=" + json_param);
 });
 
 /* Professor JS Handlers */
