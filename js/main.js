@@ -24,9 +24,7 @@ var class_interval = null; // Professor's timer interval
 
 
 function onDeviceReady() {
-    navigator.notification.beep(1);
-    navigator.notification.vibrate(1000);
-    navigator.notification.alert('הצבעה בעוד 2 דקות.', function(){}, 'התראת הצבעה', 'סגור');
+    
 }
 document.addEventListener('deviceready', onDeviceReady, true);
 
@@ -1142,7 +1140,8 @@ function start_clock_seeker(seconds,timings) {
 			if (toNextQ == 0) {
 				changeQustion($question.attr('id'));
 			} else if (toNextQ == 120) {
-				// Here is going to be Phongeapp Vibration					
+				navigator.notification.vibrate(1000);
+    			navigator.notification.alert('הצבעה בעוד 2 דקות.', function(){}, 'התראת הצבעה', 'סגור');					
 			}
 			var sec = pad(toNextQ % 60);
 			$('#clock > #seconds').html(sec);
@@ -1158,7 +1157,8 @@ function start_clock_seeker(seconds,timings) {
 			if (toNextQ == 0) {
 				changeQustion($question.attr('id'));
 			} else if (toNextQ == 120) {
-				// Here is going to be Phongeapp Vibration					
+				navigator.notification.vibrate(1000);
+    			navigator.notification.alert('הצבעה בעוד 2 דקות.', function(){}, 'התראת הצבעה', 'סגור');					
 			}
 			var sec = pad(toNextQ % 60);
 			$('#clock > #seconds').html(sec);
