@@ -24,7 +24,7 @@ var class_interval = null; // Professor's timer interval
 
 
 function onDeviceReady() {
-    navigator.notification.vibrate( 2000 );
+    navigator.notification.beep( 3);
 }
 document.addEventListener('deviceready', onDeviceReady, true);
 
