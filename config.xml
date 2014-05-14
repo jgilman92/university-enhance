@@ -132,6 +132,7 @@
 	<gap:plugin name="org.apache.cordova.splashscreen" />
 	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" />
 	<gap:plugin name="org.apache.cordova.file-transfer" />
+	<gap:plugin name="org.apache.cordova.vibration" version="0.3.0" />
     <!--<plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />-->
 
     <!--
