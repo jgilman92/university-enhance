@@ -40,6 +40,14 @@
 	<script type="text/javascript" src="cordova.js"></script>
 </head>
 <body style="direction:rtl">
+	<div id="home">
+		<div id="app-status-div">
+			<ul id="app-status-ul">
+				<li>Cordova PushNotification Plugin Demo</li>
+			</ul>
+		</div>
+	</div>
+	
 	<div data-role="page" id="Login_Page">
 		<div data-role="content" id="splash">
 			<img class="splash_img" src="img/splash_screen.png" />
@@ -113,7 +121,7 @@
 			<a href="#chat_job_seeker" data-rel="popup" data-position-to="window" data-transition="pop">
 				<img src="img/job_seeker/chat_icon.png" style="max-width:45px; margin-right:10px" alt="צ'אט" />
 			</a>
-			<div data-role="popup" style="width:100%" id="chat_job_seeker" class="ui-corner-all">
+			<div data-role="popup" id="chat_job_seeker" class="ui-corner-all">
 				<div class="chat_submit">
 					<input type="text" id="chat_text" placeholder="רשום הודעה" />
 				    <button id="submit_post">שלח</button>
@@ -398,6 +406,8 @@
 	<script src="js/jquery.mobile-1.4.1.min.js"></script>
 	<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
 	<script src="js/jquery.ui.touch-punch.min.js"></script>
+	<script src="js/iscroll.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/chat.js"></script>
 </body>
 </html>

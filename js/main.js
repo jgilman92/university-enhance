@@ -16,11 +16,135 @@ var class_ended = false; // Validates that the class was ended
 var already_voted = false; // Checks if user already voted/answered specific question
 var half_hour_passed = 30; // Checks if half hour passed since class ENDED
 var refresh_couses_interval = null; // Checks for active courses in case no active courses at the moment
+var pushNotification;
 
 /* Professor Variables */
 var elapsed = null; // Stores the time elapsed ~~~Professor
 var class_stoped = false; // Validates that professor stopped the class
 var class_interval = null; // Professor's timer interval
+
+
+function onDeviceReady() {
+    $("#app-status-ul").append('<li>deviceready event received</li>');
+    
+	document.addEventListener("backbutton", function(e)
+	{
+    	$("#app-status-ul").append('<li>backbutton event received</li>');
+		
+		if( $("#home").length > 0)
+		{
+			// call this to get a new token each time. don't call it to reuse existing token.
+			//pushNotification.unregister(successHandler, errorHandler);
+			e.preventDefault();
+			navigator.app.exitApp();
+		}
+		else
+		{
+			navigator.app.backHistory();
+		}
+	}, false);
+
+	try 
+	{ 
+    	pushNotification = window.plugins.pushNotification;
+    	if (device.platform == 'android' || device.platform == 'Android') {
+			$("#app-status-ul").append('<li>registering android</li>');
+        	pushNotification.register(successHandler, errorHandler, {"senderID":"661780372179","ecb":"onNotificationGCM"});		// required!
+		} else {
+			$("#app-status-ul").append('<li>registering iOS</li>');
+        	pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
+    	}
+    }
+	catch(err) 
+	{ 
+		txt="There was an error on this page.\n\n"; 
+		txt+="Error description: " + err.message + "\n\n"; 
+		alert(txt); 
+	} 
+}
+
+// handle APNS notifications for iOS
+function onNotificationAPN(e) {
+    if (e.alert) {
+         $("#app-status-ul").append('<li>push-notification: ' + e.alert + '</li>');
+         navigator.notification.alert(e.alert);
+    }
+        
+    if (e.sound) {
+        var snd = new Media(e.sound);
+        snd.play();
+    }
+    
+    if (e.badge) {
+        pushNotification.setApplicationIconBadgeNumber(successHandler, e.badge);
+    }
+}
+
+// handle GCM notifications for Android
+function onNotificationGCM(e) {
+    $("#app-status-ul").append('<li>EVENT -> RECEIVED:' + e.event + '</li>');
+    
+    switch( e.event )
+    {
+        case 'registered':
+		if ( e.regid.length > 0 )
+		{
+			$("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
+			// Your GCM push server needs to know the regID before it can push to this device
+			// here is where you might want to send it the regID for later use.
+			console.log("regID = " + e.regid);
+		}
+        break;
+        
+        case 'message':
+        	// if this flag is set, this notification happened while we were in the foreground.
+        	// you might want to play a sound to get the user's attention, throw up a dialog, etc.
+        	if (e.foreground)
+        	{
+				$("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
+
+				// if the notification contains a soundname, play it.
+				var my_media = new Media("/android_asset/www/"+e.soundname);
+				my_media.play();
+			}
+			else
+			{	// otherwise we were launched because the user touched a notification in the notification tray.
+				if (e.coldstart)
+					$("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
+				else
+				$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
+			}
+
+			$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
+			$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
+        break;
+        
+        case 'error':
+			$("#app-status-ul").append('<li>ERROR -> MSG:' + e.msg + '</li>');
+        break;
+        
+        default:
+			$("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
+        break;
+    }
+}
+
+function tokenHandler (result) {
+    $("#app-status-ul").append('<li>token: '+ result +'</li>');
+    // Your iOS push server needs to know the token before it can push to this device
+    // here is where you might want to send it the token for later use.
+}
+
+function successHandler (result) {
+    $("#app-status-ul").append('<li>success:'+ result +'</li>');
+}
+
+function errorHandler (error) {
+    $("#app-status-ul").append('<li>error:'+ error +'</li>');
+}
+
+document.addEventListener('deviceready', onDeviceReady, true);
+
 
 /* Mutual JS Handlers */
 // Login Page
@@ -299,9 +423,15 @@ $('#job_seeker_class_page').on("pagebeforeshow", function() {
 					if (req.status == 200 || req.status == 0) {
 						var data = JSON.parse(req.responseText);
 						if(data.success) {
+							// We count the questions here seperatly because the clock was not initiated at all (or if user resets the app)
+							questions_count = 0;
+							for (var i in data.timings) {
+								questions_count++;
+							}
+							
 							remaining_questions_timeout = setTimeout(function() {
-								$(':mobile-pagecontainer').pagecontainer('change', "#DashBoard_Page_Seeker");
-								//location.reload(1);
+								window.location = "#DashBoard_Page_Seeker";
+								location.reload(1);
 							}, parseInt(30 - half_hour_passed) * 60000);
 							html = data.html;
 							$('#job_seeker_clock').append(html).trigger( "create" );
@@ -319,17 +449,18 @@ $('#job_seeker_class_page').on("pagebeforeshow", function() {
 									changeQustion($question.attr('id'));
 								} else {
 									$question = $question.next('.seeker_question');
+									questions_count--;
 								}
+							}
+							
+							if(questions_count <= 0) {
+								$('#no_questions_left').show();
 							}
 						}
 					}
 				}
 			};
 			req.send("action=" + action + "&parameters=" + json_param);
-			
-			if(questions_count <= 0) {
-				//$('#no_questions_left').show();
-			}
 		}
 	}
 });
@@ -774,9 +905,9 @@ $(document).on('pagebeforeshow', '#my_questions', function(e, data){
 				$('.questions_page_container').hide();
 				$('#' + $(this).attr('id') + "_container").show();
 				if($(this).attr('id') == 'questions') {
-					$('.paging_pages').show()
+					$('.paging_pages').show();
 				} else {
-					$('.paging_pages').hide()
+					$('.paging_pages').hide();
 				}
 			});
 		});
@@ -827,7 +958,7 @@ $(document).on('pageshow', '#my_questions', function(e, data) {
 $(document).on('change', '#questions_course_select', function(e, data){
 	loading('show');
 	var course_id = this.value;
-	var action = 'display_questions_for_course'
+	var action = 'display_questions_for_course';
 	var parameters = {'course_id' : course_id};
 	var json_param = JSON.stringify(parameters);
     var req = new XMLHttpRequest(); // new HttpRequest instance 
@@ -986,7 +1117,7 @@ $(document).on('click', '#submit_button', function(e, data){
 							$('#questions_container').collapsibleset('refresh');				
 							if($('#questions_container').html().replace(/\s+/g, '') == '')
 							{
-								$('#questions_container').html('אין נתונים')
+								$('#questions_container').html('אין נתונים');
 							}
 							paging_pages(paging);
 							$('#questions_container').html(html);
@@ -1244,23 +1375,23 @@ function check_for_end_of_class(class_id_end) {
 							remaining_questions_timeout = setTimeout(function() {
 								$('#active_class_container').hide();
 								$('#class_ended').show();
-								$(':mobile-pagecontainer').pagecontainer('change', "#DashBoard_Page_Seeker");					
-								//location.reload(1);
+								window.location = "#DashBoard_Page_Seeker";
+								location.reload(1);
 							}, 60000 * 30);
 						} else if(questions_count == 0) {
 							$('#active_class_container').hide();
 							$('#class_ended').show();
 							setTimeout(function() {
 								window.location = "#DashBoard_Page_Seeker";
-								lcoation.reload(1);
+								location.reload(1);
 							}, 3000);
 						} else {
 							alert('ההרצאה הסתיימה.\nלרשותכם כעת 30 דקות לענות על השאלות הנותרות,\nולאחר מכן תועברו למסך הראשי.');
 							remaining_questions_timeout = setTimeout(function() {
 								$('#active_class_container').hide();
 								$('#class_ended').show();
-								$(':mobile-pagecontainer').pagecontainer('change', "#DashBoard_Page_Seeker");					
-								//location.reload(1);
+								window.location = "#DashBoard_Page_Seeker";
+								location.reload(1);
 							}, 60000 * 30);							
 						}
 					}
@@ -1360,8 +1491,8 @@ function seeker_vote(user_id, q, this_) {
 								$('#active_class_container').hide();
 								$('#class_ended').show();
 								setTimeout(function() {
-									$(':mobile-pagecontainer').pagecontainer('change', "#DashBoard_Page_Seeker");
-									//location.reload(1);		
+									window.location = "#DashBoard_Page_Seeker";
+									location.reload(1);
 								}, 3000);
 							} else {
 								alert("תמו השאלות.\nשימו לב, כאשר המרצה יסיים את ההרצאה,\nתועברו למסך הראשי.");

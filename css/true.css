@@ -76,6 +76,15 @@ box-shadow: 0 0 18px 5px #29ACE3 !important;
 -moz-box-shadow: 0 0 18px 5px #29ACE3 !important;
 }
 
+.class_pending {
+-webkit-border-radius: 15px !important;
+-moz-border-radius: 15px !important;
+border-radius: 15px !important;
+box-shadow: 0 0 18px 5px orange !important;
+-webkit-box-shadow: 0 0 18px 5px orange !important;
+-moz-box-shadow: 0 0 18px 5px orange !important;
+}
+
 #begin_class_container {
 	padding-top: 50px;
 	text-align:center;
@@ -296,11 +305,20 @@ box-shadow: 0 0 18px 5px #29ACE3 !important;
 
 #chat_job_seeker-popup {
 	width:80%;
-	right:10%;	
+	right:10%;
+	height: 300px;
+	overflow: hidden;
+	padding: 12px;
 }
 
 #chat_job_seeker {
 	padding:10px;
+}
+
+.chat_job_seeker {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
 }
 
 .chat_container {
