@@ -24,7 +24,9 @@ var class_interval = null; // Professor's timer interval
 
 
 function onDeviceReady() {
-    navigator.notification.beep( 3);
+    navigator.notification.beep(1);
+    navigator.notification.vibrate(1000);
+    navigator.notification.alert('הצבעה בעוד 2 דקות.', function(){}, 'התראת הצבעה', 'סגור');
 }
 document.addEventListener('deviceready', onDeviceReady, true);
 
